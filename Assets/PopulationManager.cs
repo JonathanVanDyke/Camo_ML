@@ -12,6 +12,14 @@ public class PopulationManager : MonoBehaviour
   int trialTime = 10;
   int generation = 1;
 
+  GUIStyle guiStyle = new GUIStyle();
+  private void OnGUI() {
+    guiStyle.fontSize = 50;
+    guiStyle.normal.textColor = Color.white;
+    GUI.Label(new Rect(10, 10, 100, 20), "Generation: " + generation, guiStyle);
+    GUI.Label(new Rect(10, 65, 100, 20), "Trial Time: " + (int)elapsed, guiStyle);
+  }
+
   // Start is called before the first frame update
   void Start()
   {
@@ -29,6 +37,11 @@ public class PopulationManager : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-      
+    elapsed += Time.deltaTime;
+    if(elapsed > trialTime)
+    {
+      BreedNewPopulation();
+      elapsed = 0;
+    }
   }
 }
