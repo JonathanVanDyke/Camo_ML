@@ -41,10 +41,17 @@ public class PopulationManager : MonoBehaviour
     DNA dna1 = parent1.GetComponent<DNA>();
     DNA dna2 = parent1.GetComponent<DNA>();
 
-    // 50% of the time you get parent 1 dna or parent 2 dna
-    offspring.GetComponent<DNA>().r = Random.Range(0,10) < 5 ? dna1.r : dna2.r;
-    offspring.GetComponent<DNA>().g = Random.Range(0,10) < 5 ? dna1.g : dna2.g;
-    offspring.GetComponent<DNA>().b = Random.Range(0,10) < 5 ? dna1.b : dna2.b;
+    // low chance of adding a mutant color every generation
+    if(Random.Range(0,1000) > 5) {
+      // 50% of the time you get parent 1 dna or parent 2 dna
+      offspring.GetComponent<DNA>().r = Random.Range(0,10) < 5 ? dna1.r : dna2.r;
+      offspring.GetComponent<DNA>().g = Random.Range(0,10) < 5 ? dna1.g : dna2.g;
+      offspring.GetComponent<DNA>().b = Random.Range(0,10) < 5 ? dna1.b : dna2.b;
+    } else {
+      offspring.GetComponent<DNA>().r = Random.Range(0.0f, 1.0f);
+      offspring.GetComponent<DNA>().g = Random.Range(0.0f, 1.0f);
+      offspring.GetComponent<DNA>().b = Random.Range(0.0f, 1.0f);
+    }
     return offspring;
   }
 
