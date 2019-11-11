@@ -1,0 +1,11 @@
+.vs
+.vscode
+Logs
+Packages
+# Assets
+Library
+ProjectSettings
+Temp
+Camo.sln
+Assembly-CSharp.csproj
+obj
